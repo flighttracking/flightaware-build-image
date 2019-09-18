@@ -10,5 +10,11 @@ jobs:
      # build the application image
      - run: docker build -t flighttracking/flightaware-build-image:$CIRCLE_BRANCH .
 
+     # tag image with latest
+     - run: docker tag flighttracking/flightaware-build-image:$CIRCLE_BRANCH flighttracking/flightaware-build-image:latest
+
      # deploy the image
      - run: docker push flighttracking/flightaware-build-image:$CIRCLE_BRANCH
+
+     # push the latest image
+     - run: docker push flighttracking/flightaware-build-image:latest
